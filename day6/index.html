@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alignment/Float</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+        /* position: relative; */
+        width: 100vw;
+        height: 800px;
+        border: 1px solid red;
+        margin: auto;
+      }
+      /* #card-3 {
+        height: 20px;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+      } */
+
+      .card {
+        /* display: inline-block; */
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        width: 200px;
+        height: 100px;
+        margin-bottom: 10px;
+      }
+      .card h4 {
+        font-size: 18px;
+        margin-top: 0;
+        margin-bottom: 12px;
+        padding-top: 0;
+      }
+      .card p {
+        font-size: 12px;
+        margin-bottom: 20px;
+      }
+      .card button {
+        background-color: rgb(161, 237, 161);
+        color: black;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      /* Float Property */
+
+      /* #card-1 {
+        float: right;
+      }
+      #card-2 {
+        float: right;
+      }
+      #card-3 {
+        float: right;
+      }
+      p {
+        clear: both;
+      } */
+
+      /* Position property */
+      /* static, relative, absolute, fixed, sticky */
+      /* #card-1 { */
+      /* relative to its actual position */
+      /* position: relative;
+        top: 50px;
+        left: 50px;
+      } */
+      /* #card-2 { */
+      /* relative to its parent -> parent relation  */
+      /* position: absolute;
+        top: 50px;
+        left: 50px;
+      }
+      #card-4 {
+        position: sticky;
+        top: 0;
+        left: 0;
+      } */
+      #card-1{
+       order: 2;
+      }
+      #card-2{
+       order: 3;
+      }
+      #card-3{
+       order: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <h4>Float</h4>
+    <div class="container-fluid">
+      <div class="container">
+        <div style="width:700px;border: 1px solid black; display: flex; justify-content: space-around;">
+         <div class="card" id="card-1">
+          <h4 class="card-header">Card Header 1</h4>
+          <p class="card-body">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam, ab.
+          </p>
+          <button class="card-footer">View Details</button>
+        </div>
+
+        <div class="card" id="card-2">
+          <h4 class="card-header">Card Header 2</h4>
+          <p class="card-body">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam, ab.
+          </p>
+          <button class="card-footer">View Details</button>
+        </div>
+        </div>
+
+        <div class="card" id="card-3">
+          <h4 class="card-header">Card Header 3</h4>
+          <p class="card-body">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam, ab.
+          </p>
+          <button class="card-footer">Chat with me</button>
+        </div>
+        <!-- <div class="card" id="card-4">
+          <h4 class="card-header">Card Header 4</h4>
+          <p class="card-body">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam, ab.
+          </p>
+          <button class="card-footer">View Details</button>
+        </div>
+      </div> -->
+    </div>
+  </body>
+</html>
