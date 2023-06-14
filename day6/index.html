@@ -47,6 +47,7 @@
         font-size: 12px;
         margin-bottom: 20px;
       }
+      
       .card button {
         background-color: rgb(161, 237, 161);
         color: black;
@@ -90,13 +91,17 @@
         left: 0;
       } */
       #card-1{
-       order: 2;
+       flex: 1;
+       
       }
       #card-2{
-       order: 3;
+        flex: 2;
+       /* flex: 2; */
       }
       #card-3{
-       order: 1;
+        /* flex: 3;
+         */
+         flex: 3;
       }
     </style>
   </head>
@@ -104,7 +109,7 @@
     <h4>Float</h4>
     <div class="container-fluid">
       <div class="container">
-        <div style="width:700px;border: 1px solid black; display: flex; justify-content: space-around;">
+        
          <div class="card" id="card-1">
           <h4 class="card-header">Card Header 1</h4>
           <p class="card-body">
@@ -119,7 +124,6 @@
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam, ab.
           </p>
           <button class="card-footer">View Details</button>
-        </div>
         </div>
 
         <div class="card" id="card-3">
