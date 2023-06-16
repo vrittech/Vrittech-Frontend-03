@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media Queries</title>
+    <style>
+      /* Mobile first responsive website */
+      h3 {
+        font-size: 64px;
+      }
+      @media (max-width: 400px) {
+        h3 {
+          font-size: 24px;
+          color: blue;
+        }
+      }
+
+      @media (max-width: 768px) {
+        h3 {
+          font-size: 24px;
+          color: blue;
+        }
+      }
+
+      @media (min-width: 769px) and (max-width: 1023px) {
+        h3 {
+          font-size: 48px;
+          color: red;
+        }
+      }
+      @media (min-width: 1024px) {
+        h3 {
+          font-size: 100px;
+          color: aquamarine;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Media responsive content</h3>
+  </body>
+</html>

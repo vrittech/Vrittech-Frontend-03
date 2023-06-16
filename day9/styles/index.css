@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Times New Roman", Times, serif;
+}
+/* Landing Page */
+.header {
+  min-height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(
+      rgba(245, 246, 252, 0.52),
+      rgba(117, 19, 93, 0.73)
+    ),
+    url("https://images.unsplash.com/photo-1686572533505-bafac76816ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDE2fEZ6bzN6dU9ITjZ3fHxlbnwwfHx8fHw%3D&auto=format&fit=crop&w=500&q=60");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+nav {
+  display: flex;
+  padding: 1% 6%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav img {
+  width: 50px;
+}
+
+.nav-links ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 8px 12px;
+  position: relative;
+}
+
+.nav-links ul li a {
+  text-decoration: none;
+  color: #000;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.nav-links ul li a::after {
+  content: "";
+  background: green;
+  height: 2px;
+  width: 0%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transition: 0.5s;
+}
+
+.nav-links ul li a:hover::after {
+  width: 100%;
+}
+
+.fa-bars {
+  display: none;
+}
+
+.text-box {
+  color: aquamarine;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  text-align: center;
+}
+
+.text-box h3 {
+  font-size: 62px;
+  margin-bottom: 1%;
+}
+
+.text-box p {
+  font-size: 12px;
+}
+
+/* Course css */
+.course {
+  text-align: center;
+  width: 88%;
+  margin: 3% auto;
+}
+
+.course .row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: 5%;
+}
+
+.course-col {
+  width: 30%;
+  padding: 1%;
+  border-radius: 5px;
+  background-color: antiquewhite;
+  margin-bottom: 3%;
+  display: flex;
+  flex-direction: column;
+  transition: 0.5s;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.1);
+}
+
+.course-col:hover {
+  transform: translateY(-15px);
+}
+
+.course-col h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.course-col p {
+  font-size: 16px;
+  text-align: center;
+}
+
+.course-col img {
+  width: 100%;
+  max-height: 300px;
+  border-radius: 7px;
+  margin-bottom: 10px;
+}
