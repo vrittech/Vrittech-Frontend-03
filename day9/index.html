@@ -22,13 +22,14 @@
         </a>
 
         <div class="nav-links" id="navLinks">
+          <i class="fa fa-times" onclick="hideMenu()"></i>
           <ul>
             <li><a href="#">Home</a></li>
             <li><a href="#course-cors">Courses</a></li>
             <li><a href="#">About us</a></li>
           </ul>
         </div>
-        <i class="fa-solid fa-bars"></i>
+        <i class="fa-solid fa-bars" onclick="showMenu(event)"></i>
       </nav>
 
       <div class="text-box">
@@ -199,5 +200,19 @@
         </div>
       </div>
     </section>
+
+    <script>
+      const navLinks = document.getElementById("navLinks");
+      function hideMenu() {
+        navLinks.style.right = "-200px";
+        // navLinks.style.display = "none";
+      }
+
+      function showMenu(e) {
+        e.preventDefault();
+        navLinks.style.right = "0";
+        // navLinks.style.display = "block";
+      }
+    </script>
   </body>
 </html>
