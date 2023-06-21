@@ -1,0 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap");
+
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  background-color: #f1fbff;
+}
+
+.section-padding {
+  padding: 100px 0;
+}
+
+.navbar {
+  z-index: 4;
+}
+.navbar-nav a {
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.navbar-light .navbar-brand {
+  color: #000;
+  font-size: 25px;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.navbar-light .navbar-brand:focus,
+.navbar-light .navbar-brand:hover {
+  color: grey;
+}
+
+.w-100 {
+  width: 100vw;
+}
+
+.navbar-toggler {
+  padding: 1px 5px;
+  font-size: 18px;
+  line-height: 1;
+  background-color: #fff;
+}
+
+.carousel-item {
+  height: 100vh;
+}
+
+.carousel-caption {
+  bottom: 200px;
+  z-index: 2;
+}
+
+.carousel-caption h5 {
+  font-size: 64px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.carousel-caption p {
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.carousel-inner:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.portfolio .card {
+  box-shadow: 15px 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+@media screen and (max-width: 768px) {
+  .carousel-caption h5 {
+    font-size: 24px;
+  }
+
+  .carousel-caption p {
+    font-size: 10px;
+  }
+}
