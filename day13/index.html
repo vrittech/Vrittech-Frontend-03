@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS</title>
+  </head>
+  <body>
+    <script>
+      //Conditional Statement
+      let marks = 32;
+      // marks >= 40 ? console.log("User passed ") : console.log("User failed");
+      // if (marks >= 0 && marks < 40) {
+      //   console.log("Student is failed");
+      // } else if (marks >= 40 && marks < 55) {
+      //   console.log("Student passed with third division");
+      // } else if (marks >= 55 && marks < 70) {
+      //   console.log("Student passed with second division");
+      // } else if (marks >= 70 && marks < 80) {
+      //   console.log("Student passed with first division");
+      // } else if (marks >= 80 && marks <= 100) {
+      //   console.log("Student passed with distinction");
+      // } else {
+      //   console.log("marks is not valid");
+      // }
+
+      //Odd & even
+
+      // console.log(typeof num);
+      // if (typeof num === "number") {
+      //   if (num === undefined || num === null) {
+      //     console.log(`Please enter a value`);
+      //   } else if (num < 0) {
+      //     console.log(`Negative number`);
+      //   } else if (num % 2 === 0) {
+      //     console.log(`${num} is a even number`);
+      //   } else {
+      //     console.log(`${num} is a odd number`);
+      //   }
+      // } else {
+      //   console.log("Value must be number");
+      // }
+      let num = 337;
+      let isPrime;
+      // for (let i = 1; i <= num; i++) {
+      //   console.log(`${num} % ${i} = ${num % i}`);
+      // }
+
+      // 100 floor - unlimited eggs -> minimum number of floor from which the egg when dropped breaks
+
+      // um % 2 === 0;
+      if (typeof num === "number") {
+        if (num <= 2) {
+          document.write(num, "Not a prime number");
+        } else {
+          //
+          for (let i = 2; i < num / 2; i++) {
+            console.log(`${num} % ${i} = ${num % i}`);
+            if (num % i === 0) {
+              isPrime = false;
+              break;
+            } else {
+              isPrime = true;
+            }
+          }
+
+          if (isPrime) {
+            console.log(`${num} is a prime number`);
+          } else {
+            console.log(`${num} is not a prime number`);
+          }
+        }
+      } else {
+        document.write("Number");
+      }
+      let string = "over";
+      console.log(string[string.length - 1]);
+
+      //palidrome => 'madam' ==== 'madam' ? 'palidrome' :'not palidrome'
+      let reversedString = "";
+      for (let i = 0; i < string.length; i++) {
+        reversedString = "over";
+      }
+    </script>
+  </body>
+</html>
