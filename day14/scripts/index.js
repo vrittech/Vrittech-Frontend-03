@@ -15,14 +15,14 @@ function reverseValue(value) {
    for (let i = length - 1; i >= 0; i--) {
       reversedString = reversedString + str[i];
    }
-   let obj = {
+
+   return {
       oriStr: str,
       revStr: reversedString
-   }
-   return obj;
+   };
 }
 //arrow function
-const findPalidrome = (reversedString, str) => {
+function findPalidrome(reversedString, str) {
    if (reversedString === str) {
       console.log(str, 'It is a palindrome str')
    } else {
