@@ -1,4 +1,4 @@
-const array1 = [10, 1000, 0];
+const array1 = [10, 1000, 0, 20];
 
 const findMaximumMinimumValue = (arr) => {
    let min = arr[0];
@@ -12,6 +12,7 @@ const findMaximumMinimumValue = (arr) => {
       if (a > max) {
          max = a;
       }
+
    })
 
    // for (let i = 1; i < arr.length; i++) {
