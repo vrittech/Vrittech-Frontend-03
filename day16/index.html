@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <select name="" id="" onchange="">
+      <option value="">Action</option>
+      <option value="adventure">Adventure</option>
+    </select>
+    <script>
+      const b = [];
+      const a = ["Sita", 2, "Shyam", true];
+
+      // for (let i = 0; i < a.length; i++) {
+      //   if (typeof a[i] === "string") {
+      //     b.push(a[i]);
+      //   }
+      // }
+
+      // for (let data of a) {
+      //   if (typeof data === "string") {
+      //     b.push(data);
+      //   }
+      // }
+
+      // a.forEach(function (data) {
+      //   if (typeof data === "string") {
+      //     b.push(data);
+      //   }
+      // });
+      const filteredValue = [];
+      a.map(function (data) {
+        if (typeof data === "string") {
+          return data;
+        }
+      })
+        .filter((val) => {
+          return val !== undefined;
+        })
+        .forEach((data) => {
+          filteredValue.push({
+            isActive: true,
+            name: data,
+          });
+        });
+
+      const numbers = [1, 25, 6, 7, 8, 10];
+
+      const oddNumbers = numbers.filter((val) => {
+        // if (val % 2 !== 0) {
+        //   return true;
+        // }
+        return val % 2 !== 0;
+      });
+
+      const evenNumbers = numbers.filter((val) => val % 2 === 0);
+
+      const students = [
+        {
+          id: 1,
+          name: "Prashanta",
+          age: 26,
+          marks: 42,
+          address: {
+            streetNo: 330,
+            postalCode: 33600,
+            city: [
+              {
+                state: "Bagmati",
+                name: "KTM",
+              },
+            ],
+          },
+        },
+        {
+          id: 2,
+          name: "Anil",
+          age: 22,
+          marks: 37,
+          address: {
+            streetNo: 330,
+            postalCode: 33600,
+            city: [
+              {
+                state: "Bagmati",
+                name: "KTM",
+              },
+            ],
+          },
+        },
+        {
+          id: 3,
+          name: "Ram",
+          age: 17,
+          marks: 55,
+          address: {
+            streetNo: 330,
+            postalCode: 33600,
+            city: [
+              {
+                state: "Gandaki",
+                name: "Lamjung",
+              },
+            ],
+          },
+        },
+        {
+          id: 5,
+          name: "Sita",
+          age: 16,
+          marks: 90,
+          address: {
+            streetNo: 330,
+            postalCode: 33600,
+            city: [
+              {
+                state: "Bagmati",
+                name: "KTM",
+              },
+              {
+                state: "Gandaki",
+                name: "Pokhara",
+              },
+            ],
+          },
+        },
+        {
+          id: 6,
+          name: "Hari",
+          age: 16,
+          marks: 90,
+          address: {
+            streetNo: 330,
+            postalCode: 33600,
+            city: [
+              {
+                state: "Gandaki",
+                name: "KTM",
+              },
+            ],
+          },
+        },
+      ];
+
+      const response = {
+        status: true,
+        message: "Data fetched succefully",
+        data: students,
+      };
+
+      function filterStudentsWithCity(response, city) {
+        const filteredStudents = response.data.filter((d) => {
+          const filteredCity = d.address.city.filter((c) => {
+            return c.state === city;
+          });
+          return filteredCity.length > 0;
+        });
+        return filteredStudents;
+      }
+
+      const cityName = prompt("Enter a state name");
+      const filData = filterStudentsWithCity(response, cityName);
+      if (filData.length === 0) {
+        console.log("No student with such state");
+      } else {
+        console.log(filData);
+      }
+      console.log("sadsdasda");
+
+      //Syncronous programming
+
+      console.log("first");
+      console.log("sec");
+      console.log("thirtd");
+    </script>
+  </body>
+</html>
