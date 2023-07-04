@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Syncronous/Asyncronous JS</title>
+  </head>
+  <body>
+    <script>
+      // function sum(a, b, cb) {
+      //   console.log("sum", a + b);
+      //   cb(10, 10, mul);
+      // }
+
+      function mul(a, b) {
+        return a * b;
+      }
+
+      // mul(1,2)
+
+      // function sub(a, b, cb) {
+      //   console.log(a - b);
+      //   const mul = cb(7, 9);
+      //   console.log("mul", mul);
+      // }
+
+      // sum(1, 2, sub);
+
+      //callback function
+      const students = ["Ram", "Shyam", "Hari"];
+
+      // function addStudents(student, cb) {
+      //   setTimeout(() => {
+      //     console.log("third");
+      //     students.push(student);
+      //     cb();
+      //   }, 50);
+      // }
+
+      // function getStudents() {
+      //   document.write(students);
+      //   console.log("students fetched here");
+      // }
+      // console.log("first");
+      // const stud = prompt("Enter a student name");
+      // console.log("second");
+      // addStudents(stud, getStudents);
+
+      // console.log("I run here");
+
+      //Promises
+      // -> pending, fulfilled, rejected
+
+      function addStudents(student) {
+        let error = false;
+        if (typeof student === "number") {
+          error = true;
+        }
+
+        return new Promise((fulfilled, reject) => {
+          if (error) {
+            reject({
+              status: false,
+              message: "Failed to add data",
+            });
+          } else {
+            students.push(student);
+            fulfilled({
+              status: true,
+              message: "Stundet added succefully",
+              data: students,
+            });
+          }
+        });
+      }
+
+      // HTTP -> GET POST DELETE PATCH/PUT -> CRUD
+
+      // addStudents(100)
+      //   .then((resp) => {
+      //     console.log(resp);
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
+
+      // mul(2, 5);
+      //GET
+      // async function getProducts {
+      const getProducts = async () => {
+        try {
+          const resp = await fetch("https://dummyjso.com/products");
+          const products = await resp.json();
+          console.log(products);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      getProducts();
+
+      // fetch("https://dummyjson.com/products")
+      //   .then((resp) => {
+      //     return resp.json();
+      //   })
+      //   .then((resp) => {
+      //     console.log(resp);
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
+
+      console.log("Api called here");
+      //callback
+      //promises
+      //async/await
+    </script>
+  </body>
+</html>

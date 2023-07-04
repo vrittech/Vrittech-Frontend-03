@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTTP methods/ASYNC/AWAIT</title>
+  </head>
+  <body>
+    <form action="">
+      <input type="text" placeholder="Enter product name" />
+      <input type="text" placeholder="Enter description" />
+      <input type="number" placeholder="Enter price" />
+      <button onclick="handleSubmit(event)">Add product</button>
+      <button onclick="deleteProduct(event)">Delete product</button>
+    </form>
+    <script>
+      //GET METHODS
+      const SERVER_URL = "https://dummyjson.com";
+
+      const getUsers = async () => {
+        const resp = await fetch(`${SERVER_URL}/users`, {
+          method: "GET",
+        });
+        const users = await resp.json();
+        console.log(users);
+      };
+
+      const getProducts = async () => {
+        const resp = await fetch(`${SERVER_URL}/products`, {
+          method: "GET",
+        });
+        const products = await resp.json();
+        console.log(products);
+      };
+      getUsers();
+      getProducts();
+
+      // JSON -> Javascript Object Notation
+
+      // const student = {
+      //   firstName: "Pasang",
+      //   lasName: "Tamang",
+      //   age: 25,
+      // };
+
+      // console.log(student);
+      // console.log(JSON.stringify(student));
+
+      //POST METHOD
+      const addNewProduct = async (product) => {
+        try {
+          const body = JSON.stringify(product);
+          const response = await fetch(`${SERVER_URL}/products/add`, {
+            method: "POST",
+
+            body: body,
+          });
+          const prod = await response.json();
+          console.log("Porduct added successfully", prod);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        const product = {
+          title: "Test data",
+          description: "asdsad",
+          price: 123,
+        };
+        console.log(product);
+        addNewProduct(product);
+      };
+      //Update method
+      const updateProduct = async (product, id) => {
+        try {
+          const body = JSON.stringify(product);
+          const response = await fetch(`${SERVER_URL}/products/${id}`, {
+            method: "PUT",
+            body: body,
+          });
+          const updatedProd = await response.json();
+          console.log("product updated", updatedProd);
+        } catch (error) {}
+      };
+
+      updateProduct({ title: "abc" }, 2);
+
+      //Delete Method
+      const deleteProduct = async (event) => {
+        try {
+          event.preventDefault();
+          let id = 2;
+          const response = await fetch(`${SERVER_URL}/products/${id}`, {
+            method: "DELETE",
+          });
+          const deletedProd = await response.json();
+          console.log("product delete successfully", deletedProd);
+        } catch (error) {}
+      };
+
+      //DOM -> Document Object Model
+      document.title = "DOM";
+      //window
+    </script>
+  </body>
+</html>
