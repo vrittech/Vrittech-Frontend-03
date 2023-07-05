@@ -31,6 +31,8 @@ const todoInput = document.getElementById("todo-input");
 const todoList = document.getElementById("todo-list");
 
 let todos = [];
+let todoId = "";
+let todoName = "";
 
 
 
@@ -87,6 +89,14 @@ const displayTodos = () => {
       const editButton = document.createElement("button");
       editButton.classList.add("btn", "btn-primary", "btn-sm");
       editButton.innerText = "Edit";
+      editButton.setAttribute("data-bs-toggle", "modal");
+      editButton.setAttribute("data-bs-target", "#editModal");
+      editButton.addEventListener('click', (e) => {
+         e.preventDefault();
+         document.querySelector("#todo-edit").value = todo.name;
+         // document.querySelector("#todo-id").value = todo.id;
+         todoId = todo.id;
+      })
 
       const deleteButton = document.createElement("button");
       deleteButton.classList.add("btn", "btn-danger", "btn-sm", "ms-1");
@@ -110,6 +120,32 @@ const displayTodos = () => {
 
    })
 }
+
+const editTodoBtn = document.getElementById('edit-changes');
+
+// document.getElementById("todo-edit").addEventListener("change", (e) => {
+
+//    todoName = e.target.value;
+// })
+
+function handleInputChange(e) {
+   todoName = e.target.value;
+}
+
+editTodoBtn.addEventListener('click', (e) => {
+   e.preventDefault();
+   const editedTodo = document.getElementById("todo-edit").value
+   // const id = document.getElementById("todo-id").value
+   todos = todos.map((todo) => {
+      return todo.id === todoId ? {
+         id: todo.id,
+         name: todoName,
+         completed: todo.completed
+      } : todo;
+   })
+   displayTodos();
+   document.getElementById("btn-close").click();
+})
 
 
 
