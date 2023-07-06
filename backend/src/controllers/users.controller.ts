@@ -33,10 +33,11 @@ export const signup = async (req: Request, res: Response) => {
 export const signin = async (req: Request, res: Response) => {
     try {
         const { email, password } = req.body;
-
+        console.log(email)
+        console.log(password)
         const user: any = await User.findOne({ email });
 
-
+        console.log(user)
 
         if (!user) {
             return res.status(401).json({
@@ -45,7 +46,7 @@ export const signin = async (req: Request, res: Response) => {
             })
         } else {
             const matchPass = await user.matchPassword(password);
-
+            console.log(matchPass)
             if (matchPass) {
                 const secretKey: string = process.env.JWT_SECRET_KEY ?? '';
                 const token = jwt.sign({ email: user.email }, secretKey, {

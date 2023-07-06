@@ -9,14 +9,23 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
-    <title>Login Page</title>
+    <title>Signup Page</title>
   </head>
   <body>
     <div class="container">
-      <h4 class="text-center">Login Form</h4>
+      <h4 class="text-center">Signup Form</h4>
       <form action="">
         <div class="mb-2">
-          <div class="form-label" for="email">Email</div>
+          <div class="form-label" for="full-name">Full Name</div>
+          <input
+            id="full-name"
+            type="text"
+            required
+            class="form-control border border-2 rounded"
+          />
+        </div>
+        <div class="mb-2">
+          <div class="form-label" for="">Email</div>
           <input
             id="email"
             type="email"
@@ -25,7 +34,7 @@
           />
         </div>
         <div class="mb-2">
-          <div class="form-label" for="password">Password</div>
+          <div class="form-label" for="">Password</div>
           <input
             id="password"
             type="password"
@@ -33,11 +42,10 @@
             class="form-control border border-2 rounded"
           />
         </div>
-        <button class="btn btn-primary" id="login-btn">Login</button>
-        <br />
-        <span class="text-danger" id="login-err"></span>
+        <button class="btn btn-primary" onclick="signup(event)">Sign Up</button>
+        <span class="text-danger" id="error-msg"></span>
       </form>
     </div>
-    <script src="./scripts/login.js"></script>
+    <script src="./scripts/signup.js"></script>
   </body>
 </html>
