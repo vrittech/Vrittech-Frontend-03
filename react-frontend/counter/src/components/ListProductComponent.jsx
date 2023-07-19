@@ -1,7 +1,11 @@
 import React from "react";
 import { Button, Card } from "react-bootstrap";
 
-function ListProductComponent({ product, deleteProduct }) {
+function ListProductComponent({ product, deleteProduct, editProduct }) {
+  // const delProd = (e) => {
+  //   e.preventDefault();
+  //   deleteProduct(product.id);
+  // };
   return (
     <Card style={{ width: "18rem", height: "400px" }}>
       <Card.Title variant="top" className="h-50">
@@ -9,12 +13,12 @@ function ListProductComponent({ product, deleteProduct }) {
       </Card.Title>
       <Card.Body>
         <Card.Title>{product.title}</Card.Title>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Button variant="danger" onClick={(e) => deleteProduct(product.id)}>
-          Delete Product
+        <Card.Text>{product.description}</Card.Text>
+        <Button variant="info" onClick={() => editProduct(product)}>
+          Edit
+        </Button>
+        <Button variant="danger" onClick={() => deleteProduct(product.id)}>
+          Delete
         </Button>
       </Card.Body>
     </Card>

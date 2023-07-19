@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { ListGroup } from "react-bootstrap";
-import ListGroupItem from "./components/ListGroupItem";
-import Button from "./Button";
 import ListProductComponent from "./components/ListProductComponent";
+import AddFormModal from "./components/modals/AddFormModal";
 
 const App = () => {
-  const textCenter = "text-center";
+  const [modalTitle, setModalTitle] = useState("");
+
+  const [edit, setEdit] = useState(false);
 
   const [product, setProduct] = useState([
     {
@@ -584,6 +584,13 @@ const App = () => {
       ],
     },
   ]);
+  const [showModal, setShowModal] = useState(false);
+
+  const [title, setTitle] = useState("");
+  const [image, setImage] = useState("");
+  const [description, setDescription] = useState("");
+
+  const [prod, setProd] = useState({});
 
   //props -> data passing
   function deleteProduct(id) {
@@ -592,19 +599,94 @@ const App = () => {
     });
     setProduct(filteredProds);
   }
+
+  function addProduct() {
+    setProd({});
+    setModalTitle("Add product form");
+    setEdit(false);
+    setShowModal(true);
+  }
+
+  const cancelHandler = () => {
+    setShowModal(false);
+  };
+
+  const addProductHandler = () => {
+    //axios api call
+    let obj = {
+      id: Date.now(),
+      title,
+      thumbnail: image,
+      description,
+    };
+
+    setProduct([...product, obj]);
+    setShowModal(false);
+  };
+
+  const editHandler = () => {
+    const updatedProd = product.map((p) => {
+      return p.id === prod.id ? prod : p;
+    });
+    setProduct(updatedProd);
+    setShowModal(false);
+  };
+
+  const editProduct = (product) => {
+    setProd(product);
+    // const editedProd = product.find((p) => {
+    //   return p.id === id;
+    // });
+    // console.log(editedProd);
+
+    setModalTitle("Edit form modal");
+    setEdit(true);
+    setShowModal(true);
+  };
+
+  const onChangeHandler = (e) => {
+    setProd((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
+  };
+
   return (
     <>
+      <h3 className="text-center">Products</h3>
+      <button
+        type="button"
+        className="btn btn-outline-primary"
+        onClick={addProduct}
+      >
+        Add Product
+      </button>
       <div className="d-flex flex-wrap">
         {product.map((prod) => {
           return (
             <ListProductComponent
               key={prod.id}
               product={prod}
+              // products={product}
+              // setProduct={setProduct}
               deleteProduct={deleteProduct}
+              editProduct={editProduct}
             />
           );
         })}
       </div>
+      <AddFormModal
+        prod={prod}
+        modalTitle={modalTitle}
+        showModal={showModal}
+        cancel={cancelHandler}
+        addProduct={addProductHandler}
+        editHandler={editHandler}
+        setTitle={setTitle}
+        setDescription={setDescription}
+        onChangeHandler={onChangeHandler}
+        setImage={setImage}
+        edit={edit}
+      />
     </>
   );
 };
