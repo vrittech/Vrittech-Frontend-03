@@ -6,6 +6,8 @@ import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import NoPageFound from "./pages/NoPageFound";
+import { ToastContainer } from "react-toastify";
+import SecureRoute from "./routes/SecureRoute";
 
 const App = () => {
   return (
@@ -14,10 +16,13 @@ const App = () => {
         <Routes>
           <Route path="/" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/counter" element={<Counter />} />
+          <Route path="" element={<SecureRoute />}>
+            <Route path="home" element={<Home />} />
+            <Route path="counter" element={<Counter />} />
+          </Route>
           <Route path="*" element={<NoPageFound />} />
         </Routes>
+        <ToastContainer />
       </BrowserRouter>
     </>
   );

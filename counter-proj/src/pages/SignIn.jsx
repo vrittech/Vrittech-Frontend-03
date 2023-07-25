@@ -4,6 +4,10 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { useState } from "react";
+import axios from "axios";
+import { errorToast, successToast } from "../services/toastify.service";
+import "../assets/login.css";
+import { toast } from "react-toastify";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -19,13 +23,19 @@ const SignIn = () => {
     e.preventDefault();
     let data = { email, password };
 
-    console.log(data);
+    const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
-    // const resp = await axios.post('url',data)
-    // console.log(resp.data)
-    // if(resp.data.status){
-    //  navigate('/home');
-    // }
+    try {
+      const resp = await axios.post(`${SERVER_URL}/users/login`, data);
+
+      if (resp.data.status) {
+        sessionStorage.setItem("isLoggedIn", true);
+        navigate("/home");
+        successToast(resp.data.status);
+      }
+    } catch ({ response }) {
+      errorToast(response.data.message);
+    }
   }
   return (
     <>
