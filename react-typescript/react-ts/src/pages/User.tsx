@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
+import { dateFormatter, getCurrentYear } from "../helpers/utils";
+import { AddressInterface } from "../interface/user.interface";
 
 const User = () => {
-  const [users, setUsers] = useState([]);
-  const [header, setHeader] = useState<any>([]);
+  const [users, setUsers] = useState<Array<any>>([]);
+  const [header, setHeader] = useState<Array<string>>([]);
 
   const getAllUsers = async () => {
     const { data } = await axios.get(
