@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -19,6 +19,8 @@ const SignIn = () => {
     navigate("/signup");
   };
 
+  const abc = useContext(LoginContext);
+
   async function submitHandler(e) {
     e.preventDefault();
     let data = { email, password };
@@ -29,7 +31,8 @@ const SignIn = () => {
       const resp = await axios.post(`${SERVER_URL}/users/login`, data);
 
       if (resp.data.status) {
-        sessionStorage.setItem("isLoggedIn", true);
+        // sessionStorage.setItem("isLoggedIn", true);
+        abc.setLoggedInUser(resp.data.data.jwt);
         navigate("/home");
         successToast(resp.data.status);
       }

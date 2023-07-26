@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Card } from "react-bootstrap";
 
 function ListProductComponent({ product, deleteProduct, editProduct }) {
@@ -6,6 +6,7 @@ function ListProductComponent({ product, deleteProduct, editProduct }) {
   //   e.preventDefault();
   //   deleteProduct(product.id);
   // };
+  const [name, setName] = useState("");
   return (
     <Card style={{ width: "18rem", height: "400px" }}>
       <Card.Title variant="top" className="h-50">
