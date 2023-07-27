@@ -47,15 +47,15 @@ app.use(indexRouter);
 const PORT = process.env.PORT ?? 8085;
 
 // Add socket io event handling
-io.on('connection', (socket) => {
+io.on('connection', (socket: any) => {
     console.log('User connected:', socket.id);
     //data refers to room id sent from frontend
-    socket.on('join_room', (data) => {
+    socket.on('join_room', (data: any) => {
         socket.join(data);
         console.log(`User with id ${socket.id} joined room: ${data}`);
     })
     //in this case, data refers to message sent from client -> object
-    socket.on('send_message', (data) => {
+    socket.on('send_message', (data: any) => {
         //data base save message here
         socket.to(data.room).emit('receive_message', data);
     })
