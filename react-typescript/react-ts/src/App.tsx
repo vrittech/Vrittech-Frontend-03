@@ -4,6 +4,8 @@ import User from "./pages/User";
 import "bootstrap/dist/css/bootstrap.min.css";
 import LecturePage from "./pages/LecturePage";
 import UserState from "./context/UserState";
+import SigninPage from "./pages/SigninPage";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   //props drilling
@@ -11,7 +13,8 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<User />} />
+        <Route path="/" element={<SigninPage />} />
+        <Route path="/users" element={<User />} />
         <Route
           path="/lectures"
           element={
@@ -21,6 +24,7 @@ function App() {
           }
         />
       </Routes>
+      <ToastContainer />
     </>
   );
 }

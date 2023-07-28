@@ -5,6 +5,7 @@ import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import UserState from "./context/UserState.tsx";
 import LoginState from "./context/LoginState.tsx";
+import "react-toastify/dist/ReactToastify.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
