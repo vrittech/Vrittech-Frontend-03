@@ -10,14 +10,21 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { successToast } from "../services/toastify.service";
+import { useNavigate } from "react-router-dom";
+import Loader from "../components/Loader";
 
 const LecturePage = () => {
   const [lectures, setLectures] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const getLectures = async () => {
+    setIsLoading(true);
     const response = await getData("lectures");
     if (response.status) {
       setLectures(response.data);
+      setIsLoading(false);
     }
   };
   useEffect(() => {
@@ -35,47 +42,67 @@ const LecturePage = () => {
       successToast(response.message);
     }
   };
+
+  const addLecture = (event: any) => {
+    event.preventDefault();
+    navigate("/lectures/add");
+  };
   return (
-    <div className="container mx-auto px-4 py-2">
-      <h2>Lectures</h2>
-      <Button variant="outlined">Add Lecture</Button>
-      <div className="d-flex flex-wrap gap-5">
-        {lectures.map((lecture: LectureInterface) => {
-          return (
-            <Card key={lecture._id} className="lecture-card">
-              <CardContent className="h-75">
-                <video controls className="h-100 w-100" height={"240"}>
-                  <source src={lecture.lectureUrl}></source>
-                </video>
-              </CardContent>
-              <div className="d-flex justify-content-between ms-3">
-                <div>
-                  <Typography variant="h5">{lecture.title}</Typography>
-                  <Typography variant="body1">
-                    {lecture.content.length > 20
-                      ? lecture.content.slice(0, 20)
-                      : lecture.content}
-                  </Typography>
-                  <Typography variant="subtitle1">
-                    Duration:{lecture.duration} hours
-                  </Typography>
-                </div>
-                <CardActions className="d-flex flex-column">
-                  <IconButton color="primary">
-                    <AiFillEdit />
-                  </IconButton>
-                  <IconButton color="error">
-                    <AiFillDelete
-                      onClick={(e: any) => handleDeleteLecture(e, lecture._id)}
-                    />
-                  </IconButton>
-                </CardActions>
-              </div>
-            </Card>
-          );
-        })}
-      </div>
-    </div>
+    <>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <div className="container mx-auto px-4 py-2">
+            <h2>Lectures</h2>
+            <Button variant="outlined" onClick={(e: any) => addLecture(e)}>
+              Add Lecture
+            </Button>
+            <div className="d-flex flex-wrap gap-5">
+              {lectures.map((lecture: LectureInterface) => {
+                return (
+                  <Card key={lecture._id} className="lecture-card">
+                    <CardContent className="h-75">
+                      <div className="video-container">
+                        <video controls className="h-100 w-100">
+                          <source src={lecture.lectureUrl}></source>
+                        </video>
+                      </div>
+                    </CardContent>
+                    <div className="d-flex justify-content-between ms-3">
+                      <div>
+                        <Typography variant="h5">{lecture.title}</Typography>
+                        <Typography variant="body1">
+                          {lecture.content.length > 20
+                            ? lecture.content.slice(0, 20)
+                            : lecture.content}
+                        </Typography>
+                        <Typography variant="subtitle1">
+                          Duration:{lecture.duration} hours
+                        </Typography>
+                      </div>
+                      <CardActions className="d-flex flex-column">
+                        <IconButton color="primary">
+                          <AiFillEdit />
+                        </IconButton>
+                        <IconButton
+                          color="error"
+                          onClick={(e: any) =>
+                            handleDeleteLecture(e, lecture._id)
+                          }
+                        >
+                          <AiFillDelete />
+                        </IconButton>
+                      </CardActions>
+                    </div>
+                  </Card>
+                );
+              })}
+            </div>
+          </div>
+        </>
+      )}
+    </>
   );
 };
 

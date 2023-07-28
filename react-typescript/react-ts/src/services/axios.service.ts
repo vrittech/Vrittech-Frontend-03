@@ -13,6 +13,19 @@ export const postData = async (url: string, data: any) => {
     }
 }
 
+export const postDataWithHeaders = async (url: string, data: any) => {
+    try {
+        const response = await axios.post(`${SERVER_URL}/${url}`, data, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+        return response.data;
+    } catch (error: any) {
+        errorToast(error.response.data.message);
+    }
+}
+
 export const getData = async (url: string) => {
     try {
 

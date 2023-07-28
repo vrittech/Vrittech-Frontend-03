@@ -2,3 +2,15 @@
   width: 30%;
   height: 400px;
 }
+
+.video-container {
+  height: 240px; /* Set your desired consistent height for the videos */
+  width: 100%; /* Ensure the video container takes the full width of the parent */
+  overflow: hidden; /* Hide any video overflow beyond the set height */
+}
+/* Optional: If you want the video to cover the entire container, you can set object-fit to 'cover' */
+.video-container video {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
