@@ -63,16 +63,7 @@ const LectureForm = () => {
         validationSchema={lectureValidationSchema}
         onSubmit={handleSubmit}
       >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting,
-          setFieldValue,
-        }) => (
+        {({ handleChange, handleSubmit, setFieldValue }) => (
           <Form onSubmit={handleSubmit}>
             <div className="w-">
               <FormControl>

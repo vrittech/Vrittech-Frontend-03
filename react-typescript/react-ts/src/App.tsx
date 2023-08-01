@@ -7,6 +7,7 @@ import UserState from "./context/UserState";
 import SigninPage from "./pages/SigninPage";
 import { ToastContainer } from "react-toastify";
 import LectureForm from "./components/forms/LectureForm";
+import EditLecturePage from "./pages/EditLecturePage";
 
 function App() {
   //props drilling
@@ -25,6 +26,7 @@ function App() {
           }
         />
         <Route path="/lectures/add" element={<LectureForm />} />
+        <Route path="/lec/:lectureId" element={<EditLecturePage />} />
       </Routes>
       <ToastContainer />
     </>

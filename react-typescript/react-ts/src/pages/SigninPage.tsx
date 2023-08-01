@@ -16,6 +16,7 @@ const SigninPage = () => {
     const response = await postData("users/login", data);
 
     if (response && response.status) {
+      debugger;
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("jwt", response.data.jwt);
       navigate("/lectures");

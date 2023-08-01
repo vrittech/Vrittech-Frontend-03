@@ -26,6 +26,20 @@ export const postDataWithHeaders = async (url: string, data: any) => {
     }
 }
 
+
+export const patchDataWithHeaders = async (url: string, data: any) => {
+    try {
+        const response = await axios.patch(`${SERVER_URL}/${url}`, data, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
+        return response.data;
+    } catch (error: any) {
+        errorToast(error.response.data.message);
+    }
+}
+
 export const getData = async (url: string) => {
     try {
 

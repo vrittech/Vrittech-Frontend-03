@@ -21,7 +21,9 @@ const LecturePage = () => {
 
   const getLectures = async () => {
     setIsLoading(true);
+
     const response = await getData("lectures");
+
     if (response.status) {
       setLectures(response.data);
       setIsLoading(false);
@@ -30,6 +32,10 @@ const LecturePage = () => {
   useEffect(() => {
     getLectures();
   }, []);
+
+  const handleEditLecture = (e: any, id: any) => {
+    navigate(`/lec/${id}`);
+  };
 
   const handleDeleteLecture = async (e: any, id: string) => {
     const response = await deleteData(`lectures/${id}`);
@@ -82,7 +88,12 @@ const LecturePage = () => {
                         </Typography>
                       </div>
                       <CardActions className="d-flex flex-column">
-                        <IconButton color="primary">
+                        <IconButton
+                          color="primary"
+                          onClick={(e: any) =>
+                            handleEditLecture(e, lecture._id)
+                          }
+                        >
                           <AiFillEdit />
                         </IconButton>
                         <IconButton
