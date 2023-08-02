@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { deleteData, getData } from "../services/axios.service";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
@@ -12,12 +12,16 @@ import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import { successToast } from "../services/toastify.service";
 import { useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
+import GlobalContext from "../context/GlobalContext";
 
 const LecturePage = () => {
   const [lectures, setLectures] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
+
+  const isLoggedInContext: any = useContext(GlobalContext);
+  console.log(isLoggedInContext);
 
   const getLectures = async () => {
     setIsLoading(true);
@@ -34,7 +38,7 @@ const LecturePage = () => {
   }, []);
 
   const handleEditLecture = (e: any, id: any) => {
-    navigate(`/lec/${id}`);
+    navigate(`/lectures/${id}`);
   };
 
   const handleDeleteLecture = async (e: any, id: string) => {
