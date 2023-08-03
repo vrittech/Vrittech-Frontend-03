@@ -13,15 +13,20 @@ import { successToast } from "../services/toastify.service";
 import { useNavigate } from "react-router-dom";
 import Loader from "../components/Loader";
 import GlobalContext from "../context/GlobalContext";
+import EditLectureFormModal from "../components/forms/EditLectureModalForm";
 
 const LecturePage = () => {
   const [lectures, setLectures] = useState([]);
+  const [editingLecture, setEditingLecture] = useState<any>({});
   const [isLoading, setIsLoading] = useState(false);
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const navigate = useNavigate();
 
   const isLoggedInContext: any = useContext(GlobalContext);
-  console.log(isLoggedInContext);
 
   const getLectures = async () => {
     setIsLoading(true);
@@ -37,8 +42,17 @@ const LecturePage = () => {
     getLectures();
   }, []);
 
-  const handleEditLecture = (e: any, id: any) => {
-    navigate(`/lectures/${id}`);
+  const handleEditLecture = (e: any, lecture: any) => {
+    setShow(true);
+    setEditingLecture(lecture);
+    // navigate(`/lectures/${id}`);
+  };
+
+  const handleEditSubmit = (e: any) => {
+    e.preventDefault();
+    console.log(editingLecture);
+    const formData = new FormData();
+    formData.append("duration", editingLecture.duration);
   };
 
   const handleDeleteLecture = async (e: any, id: string) => {
@@ -94,9 +108,7 @@ const LecturePage = () => {
                       <CardActions className="d-flex flex-column">
                         <IconButton
                           color="primary"
-                          onClick={(e: any) =>
-                            handleEditLecture(e, lecture._id)
-                          }
+                          onClick={(e: any) => handleEditLecture(e, lecture)}
                         >
                           <AiFillEdit />
                         </IconButton>
@@ -117,6 +129,13 @@ const LecturePage = () => {
           </div>
         </>
       )}
+      <EditLectureFormModal
+        show={show}
+        handleClose={handleClose}
+        editingLecture={editingLecture}
+        handleEditSubmit={handleEditSubmit}
+        setEditingLecture={setEditingLecture}
+      />
     </>
   );
 };

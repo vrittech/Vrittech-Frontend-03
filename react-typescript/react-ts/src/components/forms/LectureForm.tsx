@@ -1,22 +1,15 @@
 import { string, number, mixed, object } from "yup";
 import { Formik, ErrorMessage } from "formik";
 import { Form } from "react-bootstrap";
-import {
-  Button,
-  FormControl,
-  FormGroup,
-  FormLabel,
-  Input,
-  InputLabel,
-} from "@mui/material";
+import { Button, FormControl, Input, InputLabel } from "@mui/material";
 import { useState } from "react";
-import { postData, postDataWithHeaders } from "../../services/axios.service";
+import { postDataWithHeaders } from "../../services/axios.service";
 import { successToast } from "../../services/toastify.service";
 import { useNavigate } from "react-router-dom";
 
 const LectureForm = () => {
   const [isButtonDisabled, setIsButtonDisabled] = useState(false);
-  const [file, setFile] = useState(null);
+
   const initialValues = {
     title: "",
     content: "",
@@ -39,9 +32,10 @@ const LectureForm = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (values: any) => {
+  const handleLectureSubmit = async (values: any) => {
     setIsButtonDisabled(true);
     const formData = new FormData();
+
     formData.append("title", values.title);
     formData.append("content", values.content);
     formData.append("duration", values.duration);
@@ -61,9 +55,9 @@ const LectureForm = () => {
       <Formik
         initialValues={initialValues}
         validationSchema={lectureValidationSchema}
-        onSubmit={handleSubmit}
+        onSubmit={handleLectureSubmit}
       >
-        {({ handleChange, handleSubmit, setFieldValue }) => (
+        {({ handleChange, handleSubmit, setFieldValue, values }) => (
           <Form onSubmit={handleSubmit}>
             <div className="w-">
               <FormControl>

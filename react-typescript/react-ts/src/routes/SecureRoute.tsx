@@ -3,11 +3,11 @@ import { Navigate, Outlet } from "react-router-dom";
 import GlobalContext from "../context/GlobalContext";
 
 const SecureRoute = (props: any) => {
-  // let isLoggedIn: any = localStorage.getItem("isLoggedIn");
+  let localData: any = localStorage.getItem("isLoggedIn");
 
-  const { loginState }: any = useContext(GlobalContext);
+  // const { loginState }: any = useContext(GlobalContext);
 
-  return <>{loginState.isLoggedIn ? <Outlet /> : <Navigate to={"/"} />}</>;
+  return <>{localData === "true" ? <Outlet /> : <Navigate to={"/"} />}</>;
 };
 
 export default SecureRoute;

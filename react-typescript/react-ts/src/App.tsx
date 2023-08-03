@@ -10,6 +10,7 @@ import LectureForm from "./components/forms/LectureForm";
 import EditLecturePage from "./pages/EditLecturePage";
 import SecureRoute from "./routes/SecureRoute";
 import NoPageFound from "./pages/NoPageFound";
+import Counter from "./components/Counter";
 
 function App() {
   //props drilling
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<SigninPage />} />
         <Route path="" element={<SecureRoute />}>
           <Route path="/users" element={<User />} />
+          <Route path="/counter" element={<Counter />} />
           <Route
             path="/lectures"
             element={
