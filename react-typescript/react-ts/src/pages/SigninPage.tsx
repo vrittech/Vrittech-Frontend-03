@@ -3,10 +3,14 @@ import { Card, Form } from "react-bootstrap";
 import { postData } from "../services/axios.service";
 import { Navigate, useNavigate } from "react-router-dom";
 import GlobalContext from "../context/GlobalContext";
+import { useDispatch } from "react-redux";
+import { login } from "../slice/authSlice";
 
 const SigninPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const dispatch = useDispatch();
 
   const isLoggedInContext: any = useContext(GlobalContext);
   console.log(isLoggedInContext);
@@ -26,10 +30,13 @@ const SigninPage = () => {
     const response = await postData("users/login", data);
 
     if (response && response.status) {
+      dispatch(login(response.data.jwt));
+
       localStorage.setItem("isLoggedIn", "true");
       localStorage.setItem("jwt", response.data.jwt);
 
       isLoggedInContext.setIsLoggedIn(response.data.jwt);
+
       navigate("/lectures");
     }
   };
